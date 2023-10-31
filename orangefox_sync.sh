@@ -36,6 +36,16 @@ MANIFEST_DIR="";
 MIN_MANIFEST="https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git";
 
 # functions to set up things for each supported manifest branch
+do_fox_master() {
+	BASE_VER=12;
+	FOX_BRANCH="master";
+	FOX_DEF_BRANCH="fox_12.1";
+	TWRP_BRANCH="twrp-12.1";
+	DEVICE_BRANCH="android-12.1";
+	test_build_device="miatoll"; # the device whose tree we can clone for compiling a test build
+	[ -z "$MANIFEST_DIR" ] && MANIFEST_DIR="$BASE_DIR/$FOX_DEF_BRANCH";
+}
+
 do_fox_121() {
 	BASE_VER=12;
 	FOX_BRANCH="fox_12.1";
@@ -67,6 +77,7 @@ help_screen() {
   echo "    -p, -P, --path <absolute_path>	sync the minimal manifest into the directory '<absolute_path>'";
   echo "    -b, -B, --branch <branch>		get the minimal manifest for '<branch>'";
   echo "    	'<branch>' must be one of the following branches:";
+  echo "        master";
   echo "    		12.1";
   echo "    		11.0";
   echo "Examples:";
@@ -115,6 +126,8 @@ Process_CMD_Line() {
                  		then do_fox_121;
                		elif [ "$1" = "11.0" ];
                			then do_fox_110;
+               		elif [ "$1" = "master" ];
+               		  then do_fox_master;
                 	else
                   	   	echo "Invalid branch \"$1\". Read the help screen below.";
                   	   	echo "";
