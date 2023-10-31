@@ -192,14 +192,14 @@ init_script() {
 get_twrp_minimal_manifest() {
   cd $MANIFEST_DIR;
   echo "-- Initialising the $TWRP_BRANCH minimal manifest repo ...";
-  python3 -m repo init --depth=1 -u $MIN_MANIFEST -b $TWRP_BRANCH;
+  python3 /usr/bin/repo init --depth=1 -u $MIN_MANIFEST -b $TWRP_BRANCH;
   [ "$?" != "0" ] && {
    abort "-- Failed to initialise the minimal manifest repo. Quitting.";
   }
   echo "-- Done.";
 
   echo "-- Syncing the $TWRP_BRANCH minimal manifest repo ...";
-  python3 -m repo sync;
+  python3 /usr/bin/repo sync;
   [ "$?" != "0" ] && {
    abort "-- Failed to Sync the minimal manifest repo. Quitting.";
   }
