@@ -41,7 +41,7 @@ do_fox_master() {
 	FOX_BRANCH="master";
 	FOX_DEF_BRANCH="fox_12.1";
 	TWRP_BRANCH="twrp-12.1";
-	DEVICE_BRANCH="android-12.1";
+	DEVICE_BRANCH="main";
 	test_build_device="miatoll"; # the device whose tree we can clone for compiling a test build
 	[ -z "$MANIFEST_DIR" ] && MANIFEST_DIR="$BASE_DIR/$FOX_DEF_BRANCH";
 }
